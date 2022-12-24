@@ -1,0 +1,12 @@
+[
+  {
+    "Title": "Bookmark 1",
+    "URL": "https://google.com",
+    "Order": 0
+  },
+  {
+    "Title": "Bookmark 2",
+    "URL": "https://yahoo.com",
+    "Order": 1
+  }
+]
