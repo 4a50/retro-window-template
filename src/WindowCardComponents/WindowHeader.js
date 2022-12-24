@@ -6,6 +6,7 @@ import DownArrow from '@mui/icons-material/ArrowDropDown';
 
 const WindowHeader = (props) => {
 
+  const minBorder = 1;
   const toolBarGridAttribs = {               
     border: 1,
     borderColor: "black",
@@ -41,22 +42,23 @@ const closeButton = <Box sx={{
 
   return(
     <>    
+      <Grid container sx={{border: .5, borderLeft: 0, borderColor: props.windowTheme.iconBackground}}>
       {/*Close Button*/}
-        <Grid sx={toolBarGridAttribs} xs={1}>          
+        <Grid sx={modBorder({top: minBorder, left: 0, bottom: minBorder})} xs={1}>          
         {closeButton }
         </Grid>
       
       {/*Header Text*/}
-        <Grid xs={9}>
+        <Grid xs={9} sx={{backgroundColor: props.windowTheme.colors.headerBackground}}>
           <Typography 
           sx={{
             fontSize: 20,
             fontFamily: props.windowTheme.font.type,
             borderTop: 0, 
-            borderRight: 2,
-            borderBottom: 2,
-            borderLeft: 2,
-            borderColor: "lightblue",//props.windowTheme.colors.headerBorderColor,
+            borderRight: 0,
+            borderBottom: 0,
+            borderLeft: 0,
+            borderColor: props.windowTheme.colors.headerBorderColor,
             backgroundColor: props.windowTheme.colors.headerBackground,
             color: props.windowTheme.colors.headerText,
             textAlign: "center",   
@@ -67,11 +69,12 @@ const closeButton = <Box sx={{
         </Grid>
 
         {/*Maximize/Minimize Buttons*/}
-        <Grid sx={modBorder({top: 0})} xs={1}>
-          <DownArrow sx={{marginTop: .3, boxShadow: 3, padding: 0}}/>        
+        <Grid sx={modBorder({top: minBorder, bottom: minBorder, right: minBorder})} xs={1}>
+          <DownArrow sx={{marginTop: .3, marginRight: 0, boxShadow: 3, padding: 0}}/>        
         </Grid>
-        <Grid sx={modBorder({top: 0, right: 0})} xs={1}>
+        <Grid sx={modBorder({top: minBorder, right: minBorder, bottom: minBorder})} xs={1}>
           <UpArrow sx={{marginTop: .3, boxShadow: 3}} />        
+        </Grid>
         </Grid>
     </>
   );
